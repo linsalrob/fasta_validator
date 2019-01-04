@@ -4,7 +4,7 @@ This is simple C code to validate a fasta file. It only checks a few things, and
 
 The simple rules that we adhere to are:
 
-1. Each header line starts with a `>. The header preceedes the sequence.
+1. Each header line starts with a `>`. The header preceedes the sequence.
 2. Every other line is considered a sequence line
 3. Sequence lines may not contain whitespace, numbers, or non-sequence characters. In other words, they must only contain the characters [A-Z] and [a-z]
 4. Sequence lines can end with a new line or return depending on whether you have edited this file on a mac, pc, or linux machine.
@@ -74,7 +74,8 @@ This tests the code against both valid and invalid fasta files provided in the [
 
 Please cite this as 
 
-Edwards, R.A. 2019. fasta_validate: a fast and efficient fasta validator written in pure C.
+Edwards, R.A. 2019. fasta_validate: a fast and efficient fasta validator written in pure C. DOI: 10.5281/zenodo.2532044
+[![DOI](https://zenodo.org/badge/164130774.svg)](https://zenodo.org/badge/latestdoi/164130774)
 
 
 # License
