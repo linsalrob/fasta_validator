@@ -28,7 +28,7 @@
  * hash table. It is probably good to optimize this.
  */
 
-#define NUMSEQS 1000000
+#define NUMSEQS 1000003
 
 /*
  * This is a method to test whether the sequence
