@@ -2,7 +2,7 @@
 
 
 
-FLAGS := $(FLAGS) -std=c99 
+FLAGS := $(FLAGS) 
 
 all:
 	gcc $(FLAGS) -Wall -o fasta_validate ./fasta_validate.c
