@@ -94,8 +94,7 @@ int main(int argc, char *argv[]) {
 			// check to see if we have seen this line
 			// if not, add it to the hash
 			ENTRY item;
-			item.key = line;
-			item.data = line;
+			item.key = strdup(line);
 			ENTRY *found_item;
 			if ((found_item = hsearch(item, FIND)) != NULL) {
 				if (verbose)
