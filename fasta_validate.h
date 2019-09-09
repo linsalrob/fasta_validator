@@ -12,8 +12,6 @@
 #ifndef FASTA_H
 #define FASTA_H
 
-
-
 /*
  * the maximum line length of the sequence that we'll read
  * I don't have any idea what this should be, so I set it to
