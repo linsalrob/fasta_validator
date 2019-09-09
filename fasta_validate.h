@@ -13,6 +13,12 @@
 #define FASTA_H
 
 /*
+ * The current version of fasta_validate.
+ */
+
+#define VERSION 20190909
+
+/*
  * the maximum line length of the sequence that we'll read
  * I don't have any idea what this should be, so I set it to
  * 10,000
