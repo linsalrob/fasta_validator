@@ -89,7 +89,7 @@ int main(int argc, char *argv[]) {
 				*p = '\0';
 
 			// in case you need this!
-			// fprintf(stderr, "Parsing %s\n", line);
+			fprintf(stderr, "Parsing %s\n", line);
 
 			// check to see if we have seen this line
 			// if not, add it to the hash
@@ -98,11 +98,14 @@ int main(int argc, char *argv[]) {
 			item.data = line;
 			ENTRY *found_item;
 			if ((found_item = hsearch(item, FIND)) != NULL) {
-				if (verbose)
-					fprintf(stderr, "ERROR: Found a duplicate id: %s\n", line);
+				if (verbose) {
+					fprintf(stderr, "ERROR: Found a duplicate id: |%s|\n", line);
+					fprintf(stderr, "ERROR: Found a duplicate id: |%s|\n", found_item->key);
+				}
 				return 2;
 			}
 
+			fprintf(stderr, "adding |%s|\n", item.key);
 			(void) hsearch(item, ENTER);
 		} else {
 			if (firstline > 0) {
