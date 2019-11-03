@@ -10,11 +10,11 @@ echo "Testing another good fasta file. Should return 0"
 ./fasta_validate test/good_mixed.fasta;
 echo "Returned: $?"
 
-echo "Testing the lsat good fasta file. Should also return 0"
+echo "Testing the last good fasta file. Should also return 0"
 ./fasta_validate test/good_multiline.fasta
 echo "Returned: $?"
 
-echo -e "\nThese command should give error messages. We have turned on verbose so you can see:"
+echo -e "\nThese commands should give error messages. We have turned on verbose so you can see:"
 echo "A fasta file with no > on the first line";
 ./fasta_validate -v test/no_first_line.fasta
 echo "Returned: $?"

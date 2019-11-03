@@ -12,7 +12,11 @@
 #ifndef FASTA_H
 #define FASTA_H
 
+/*
+ * The current version of fasta_validate.
+ */
 
+#define VERSION 20190909
 
 /*
  * the maximum line length of the sequence that we'll read
@@ -28,7 +32,7 @@
  * hash table. It is probably good to optimize this.
  */
 
-#define NUMSEQS 1000000
+#define NUMSEQS 1000003
 
 /*
  * This is a method to test whether the sequence
