@@ -5,7 +5,7 @@
 FLAGS := $(FLAGS) 
 
 all:
-	gcc $(FLAGS) -Wall -o fasta_validate ./fasta_validate.c
+	gcc $(FLAGS) -Wall -o fasta_validate ./fasta_validate.c $(pkg-config --cflags --libs python3)
 
 install: all
 	cp fasta_validate /usr/local/bin
