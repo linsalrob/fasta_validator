@@ -1,3 +1,5 @@
+[![Edwards Lab](https://img.shields.io/badge/Bioinformatics-EdwardsLab-03A9F4)](https://edwards.sdsu.edu/research)
+
 # fasta_validator
 
 This is simple C code to validate a fasta file. It only checks a few things, and by default only sets its response via the return code, so you will need to check that!

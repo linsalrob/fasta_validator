@@ -1,8 +1,6 @@
 # A really simple make file because this code is not complex!
 
-
-
-FLAGS := $(FLAGS) 
+FLAGS := $(FLAGS) -Wall -std=c99
 
 all:
 	gcc $(FLAGS) -Wall -o fasta_validate ./fasta_validate.c $(pkg-config --cflags --libs python3)
