@@ -56,7 +56,8 @@ void help(char *nm) {
 	printf("\t0: this is a valid fasta file\n");
 	printf("\t1: the first line does not start with a >\n");
 	printf("\t2: the ids are not unique\n");
-	printf("\t4: lines in the sequence (that do not start >) contain characters that do not match the perl regexp /[A-Z][a-z]/\n\n");
+	printf("\t4: lines in the sequence (that do not start >) contain characters that do not match the perl regexp /[A-Z][a-z]/\n");
+	printf("\t8: There is a sequence with zero length in it\n\n");
 	printf("\tOver 200:\n");
 	printf("\t\tinternal errors, eg. unable to allocate memory, etc.\n\n");
 	printf("Usage: %s [options] [fasta file]\n\t-v: verbose output\n\t-V: current version\n\t-h: this help\n", nm);
@@ -106,16 +107,23 @@ int main(int argc, char *argv[]) {
 	}
 
 	int firstline = 1;
+	int seqcount = 0;
 	while ((fgets(line, MAXLINELEN, fp)) != NULL) {
 		if ((int) line[0] == 62) { // not sure why I'm using an ascii comparison, but I'm thinking ascii at the moment
+			if (!firstline && seqcount == 0) {
+				if (verbose) 
+					fprintf(stderr, "ERROR: We have an empty sequence\n");
+				return 8;
+			}
 			firstline = 0;
+			seqcount = 0;
 			// remove anything after the first space
 			char *p = strchr(line, ' ');
 			if (p)
 				*p = '\0';
 
 			// in case you need this!
-			fprintf(stderr, "Parsing %s\n", line);
+			// fprintf(stderr, "Parsing %s\n", line);
 
 			// check to see if we have seen this line
 			// if not, add it to the hash
@@ -130,7 +138,7 @@ int main(int argc, char *argv[]) {
 				return 2;
 			}
 
-			fprintf(stderr, "adding |%s|\n", item.key);
+			// fprintf(stderr, "adding |%s|\n", item.key);
 			(void) hsearch(item, ENTER);
 		} else {
 			if (firstline > 0) {
@@ -144,7 +152,14 @@ int main(int argc, char *argv[]) {
 					fprintf(stderr, "ERROR: We have a non word character!\n");
 				return 4;
 			}
+			seqcount += strlen(line);
 		}
+	}
+
+	if (seqcount == 0) {
+		if (verbose) 
+			fprintf(stderr, "ERROR: at tend We have an empty sequence\n");
+		return 8;
 	}
 	return 0;
 }

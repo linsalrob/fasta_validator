@@ -35,4 +35,10 @@ echo "A fasta file with php code in the middle. Yes, we've seen this!"
 ./fasta_validate -v test/code.fasta
 echo "Returned: $?"
 
-
+echo "Files with blank sequences:"
+./fasta_validate -v test/blank_sequence1.fasta
+echo "First sequence returned $?";
+./fasta_validate -v test/blank_sequence2.fasta
+echo "Middle sequence returned $?";
+./fasta_validate -v test/blank_sequence3.fasta
+echo "Last sequence returned $?";
